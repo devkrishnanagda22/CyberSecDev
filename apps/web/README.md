@@ -1,5 +1,22 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Admin content studio
+
+Admins can manage Academy courses and lessons from `/admin/courses` and
+`/admin/lessons`, and CTF challenges from `/admin/labs`. New content is saved as
+a draft by default and can be previewed through the same safe renderers used by
+learner pages. Published courses, lessons, and challenges are served through
+the existing learner routes.
+
+Challenge flags are stored as salted scrypt hashes. Legacy plaintext challenge
+flags are converted after a successful verification or admin edit. The
+development seed script requires `LAB_EVENT_LOG_FLAG` and stores only its
+hash.
+
+Database-mutating integration tests require `TEST_MONGODB_URI` to point to a
+dedicated database whose name includes `test`. They refuse to run against a
+database without that marker.
+
 ## Getting Started
 
 First, run the development server:
